@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import {DELIVERYMEN} from "../../model/mock-deliverymen";
-import {DeliveryMan} from "../../model/delivery-man";
+import {Deliveryman} from "../../model/deliveryman";
 
 
 @Component({
@@ -11,11 +10,16 @@ import {DeliveryMan} from "../../model/delivery-man";
 })
 export class DeliverymenlistComponent implements OnInit {
 
-  deliverymen = DELIVERYMEN;
+  //deliverymen = DELIVERYMEN;
+
+  @Input() deliverymen: Deliveryman[];
 
   constructor() { }
 
   ngOnInit() {
+
+    console.log(this.deliverymen);
+
   }
 
 }
