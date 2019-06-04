@@ -11,10 +11,13 @@ export class DeliverymenComponent implements OnInit {
 
   deliveryMenList: Deliveryman[] = undefined;
 
+  inputFormDeliveryman: Deliveryman;
+
   constructor(private deliverymanService: DeliverymanService) { }
 
   ngOnInit() {
 
+    this.inputFormDeliveryman = new Deliveryman();
     this.getDeliverymenList();
 
   }
@@ -26,5 +29,23 @@ export class DeliverymenComponent implements OnInit {
     });
 
   }
+
+  saveDeliveryman(){
+
+    this.deliverymanService.saveDeliveryman(this.inputFormDeliveryman).subscribe(deliveryman=>this.onSavedDeliveryman(deliveryman));
+
+  }
+
+  onSavedDeliveryman(deliveryman: Deliveryman) {
+
+    this.inputFormDeliveryman.id = undefined;
+    this.inputFormDeliveryman.name = undefined;
+    this.inputFormDeliveryman.shipmentId = undefined;
+
+    this.getDeliverymenList();
+
+
+  }
+
 
 }

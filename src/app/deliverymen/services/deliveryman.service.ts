@@ -17,7 +17,16 @@ export class DeliverymanService {
     let url = this.baseUrl + '/api/v1/deliveryMen'
     return this.http.get<Object>(url);
 
-    }
+  }
+
+  saveDeliveryman(deliveryman: Deliveryman): Observable<Deliveryman>{
+
+    let url = this.baseUrl + '/api/v1/deliveryMen'
+    return this.http.post<Deliveryman>(url, deliveryman);
+
+  }
+
+
 }
 
 
