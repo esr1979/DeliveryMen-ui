@@ -25,6 +25,12 @@ export class DeliverymanService {
     return this.http.post<Deliveryman>(url, deliveryman);
 
   }
+  
+  deleteDeliveryMan(id: String): Observable<Object>{
+
+    let url = this.baseUrl + '/api/v1/deliveryMen/' + id;
+    return this.http.delete(url);
+  }
 
 
 }

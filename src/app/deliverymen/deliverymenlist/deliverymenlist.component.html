@@ -1,6 +1,10 @@
 <h2>My Delivery Men</h2>
 <ul>
   <li *ngFor="let deliveryman of deliverymen">
-    <span>{{deliveryman.id}}</span> - {{deliveryman.name}} - {{deliveryman.shipmentId}}
+    <td>{{deliveryman.id}}&emsp;</td>
+    <td>{{deliveryman.name}}&emsp;</td>
+    <td>{{deliveryman.shipmentId}}&emsp;</td>
+    <td><button type="button" (click)="updateDeliveryman()" label="Update man">Update Delivery Man</button>&emsp;</td>
+    <td><button type="button" (click)="deleteDeliveryman(deliveryman)" label="Delete man">Delete Delivery Man</button></td>
   </li>
 </ul>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DeliverymanService } from "./services/deliveryman.service";
 import { Deliveryman } from '../model/deliveryman';
+import {del} from "selenium-webdriver/http";
+import {log} from "util";
 
 @Component({
   selector: 'app-deliverymen',
@@ -13,11 +15,16 @@ export class DeliverymenComponent implements OnInit {
 
   inputFormDeliveryman: Deliveryman;
 
+  showInputForm: Boolean;
+
   constructor(private deliverymanService: DeliverymanService) { }
 
   ngOnInit() {
 
+    this.showInputForm = false;
     this.inputFormDeliveryman = new Deliveryman();
+    this.inputFormDeliveryman.name = "Fill here the name";
+    this.inputFormDeliveryman.shipmentId = "Fill here the shipment Id";
     this.getDeliverymenList();
 
   }
@@ -41,9 +48,27 @@ export class DeliverymenComponent implements OnInit {
     this.inputFormDeliveryman.id = undefined;
     this.inputFormDeliveryman.name = undefined;
     this.inputFormDeliveryman.shipmentId = undefined;
-
+    this.showInputForm = false;
     this.getDeliverymenList();
 
+  }
+
+  deleteDeliveryman(deliveryman: Deliveryman){
+
+    this.deliverymanService.deleteDeliveryMan(deliveryman.id).subscribe(_ => this.onDeleteDeliveryman(deliveryman));
+
+  }
+
+  onDeleteDeliveryman(deliveryman: Deliveryman){
+
+    log('Delivery Man deleted: ' + deliveryman.id);
+    this.getDeliverymenList();
+
+  }
+
+  showForm(){
+
+    this.showInputForm = true;
 
   }
 
