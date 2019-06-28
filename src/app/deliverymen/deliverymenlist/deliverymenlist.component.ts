@@ -14,6 +14,7 @@ export class DeliverymenlistComponent implements OnInit {
 
   @Input() deliverymen: Deliveryman[];
   @Output() deleteDeliverymanEmit = new EventEmitter<Deliveryman>()
+  @Output() updateDeliverymanEmit = new EventEmitter<Deliveryman>()
 
   constructor() { }
 
@@ -25,6 +26,11 @@ export class DeliverymenlistComponent implements OnInit {
 
     this.deleteDeliverymanEmit.emit(deliveryman);
 
+  }
+
+  updateDeliveryman(deliveryman: Deliveryman){
+
+    this.updateDeliverymanEmit.emit(deliveryman);
   }
 
 }

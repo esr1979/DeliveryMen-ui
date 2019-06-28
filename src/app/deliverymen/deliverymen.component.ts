@@ -59,9 +59,18 @@ export class DeliverymenComponent implements OnInit {
 
   }
 
+  updateDeliveryman(deliveryman: Deliveryman) {
+
+    this.inputFormDeliveryman.id = deliveryman.id;
+    this.inputFormDeliveryman.name = deliveryman.name;
+    this.inputFormDeliveryman.shipmentId = deliveryman.shipmentId;
+    this.showForm();
+
+  }
+
+
   onDeleteDeliveryman(deliveryman: Deliveryman){
 
-    log('Delivery Man deleted: ' + deliveryman.id);
     this.getDeliverymenList();
 
   }

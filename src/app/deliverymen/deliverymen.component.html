@@ -1,4 +1,4 @@
-<app-deliverymenlist *ngIf="deliveryMenList" [deliverymen]="deliveryMenList" (deleteDeliverymanEmit)="deleteDeliveryman($event)"></app-deliverymenlist>
+<app-deliverymenlist *ngIf="deliveryMenList" [deliverymen]="deliveryMenList" (deleteDeliverymanEmit)="deleteDeliveryman($event)" (updateDeliverymanEmit)="updateDeliveryman($event)"></app-deliverymenlist>
 
 <button *ngIf="!showInputForm" type="button" (click)="showForm()" label="Create new Delivery Man">Press to create a new Delivery Man</button>
 
